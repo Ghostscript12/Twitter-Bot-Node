@@ -13,46 +13,13 @@ function random (low, high) {
     return Math.random() * (high - low) + low;
 }
 
-function get_gif(keyword) {
-
-function return_gif(err, res, cb) {
-    if (err) {
-      console.log('Issue with Gif');
-    } else {
-      cb(res.data.url);
-    }
-
-  }
-
-  var params = {
-    tag: keyword,
-    rating: 'pg'
-  }
-  giphy.random(params, return_gif;
-  console.log(gif);
-  return(gif);
-}
-
-function reply(tweet, ) {
-  var recipiants = tweet.in_reply_to_screen_name;
-  var sender = tweet.user.screen_name;
-  var text = tweet.text;
-
-  //get_gif('Batman', do_tweet);
-
-  console.log(gif_url);
-  var randnum = random(0,1000);
-  if (recipiants == 'I_am_MrBot') {
-    var rply = '@' + sender + ' ' + 'Thanks for the tweet! ' + randnum;
-    TweetIt(rply);
-  }
-}
-
 function TweetIt(txt) {
 
   var tweet = {
     status: txt
   }
+
+  T.post('statuses/update', tweet, status);
 
   function status(err, data, response) {
 
@@ -61,10 +28,45 @@ function TweetIt(txt) {
       console.log(err);
     } else {
       console.log('Whoo it worked!');
+
     }
   }
 
-  T.post('statuses/update', tweet, status);
+
 }
+
+function reply(tweet) {
+
+  var recipiants = tweet.in_reply_to_screen_name;
+  var sender = tweet.user.screen_name;
+  var text = tweet.text;
+
+
+  console.log(recipiants + ' ' + sender + ' ' + text);
+
+  var params = {
+    tag: text,
+    rating: 'pg'
+  }
+
+  giphy.random(params, function(err, res){
+
+    if(err) {
+      console.log('Issue with Gif');
+
+    } else {
+    console.log('working!')
+      var gif_url = res.data.url;
+      var randnum = random(0,1000);
+      if (recipiants == 'I_am_MrBot') {
+        var rply = '@' + sender + ' ' + 'Thanks for the tweet! ' + randnum + ' ' + gif_url;
+        console.log(rply);
+        TweetIt(rply);
+      }
+    }
+  });
+}
+
+
 
 stream.on('tweet', reply);
