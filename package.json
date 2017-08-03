@@ -1,0 +1,24 @@
+{
+  "name": "twitter_bot",
+  "version": "1.0.0",
+  "description": "A twitter bot written in node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ghostscript12/Twitter-bot-node.git"
+  },
+  "keywords": [
+    "Twitter",
+    "Bot",
+    "Node"
+  ],
+  "author": "Jay Dickson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ghostscript12/Twitter-bot-node/issues"
+  },
+  "homepage": "https://github.com/Ghostscript12/Twitter-bot-node#readme"
+}
