@@ -59,7 +59,7 @@ function reply(tweet) {
       var gif_url = res.data.url;
       var randnum = random(0,1000);
       if (recipiants == 'I_am_MrBot') {
-        var rply = '@' + sender + ' ' + 'Thanks for the tweet! ' + ' ' + gif_url;
+        var rply = '@' + sender + ' ' + 'Here have a gif!  ' + ' ' + gif_url;
         console.log(rply);
         TweetIt(rply);
       }
